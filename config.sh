@@ -1,0 +1,7 @@
+# config.sh
+
+PROJECT_NAME=
+
+SVN_HOST=
+TARGET_DIR=
+AUTHORS_FILE=
