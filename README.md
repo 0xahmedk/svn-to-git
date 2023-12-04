@@ -41,6 +41,14 @@ If you want to update commit messages, you can use the update-commit-messages.sh
 ./update-commit-messages.sh
 ```
 
+#### Bonus Script: Delete stale/unused branches that are imported by git-svn
+
+If you want to delete extra branches, that are imported or duplicated by git-svn. Refer to the script's documentation for details.
+
+```bash
+./delete_unused_branches.sh
+```
+
 That's it! Your SVN repository should now be successfully migrated to a Git repository.
 
 In this `README.md`, I've provided clear steps for configuring project variables, importing SVN authors, running the import repo script, and an optional step for updating commit messages. Feel free to customize the instructions to better fit your project's specific requirements.

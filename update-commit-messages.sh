@@ -16,7 +16,7 @@ if [ ! -d "$REPO_PATH" ]; then
 fi
 
 # Define the pattern to replace in commit messages
-PATTERN="###"
+PATTERN=""
 REPLACEMENT="#"
 
 # Run git filter-repo to replace the pattern in commit messages

@@ -34,7 +34,12 @@ fi
 
 cd $TARGET_DIR
 
+# use this for standard layout
 git svn init $SVN_HOST --stdlayout --no-metadata
+
+# use this for non standard layout
+# git svn init $SVN_HOST 
+
 # import users into the git repository you just created:
 # Check if AUTHORS_FILE exists, and create if necessary
 if [ ! -f "$AUTHORS_FILE" ]; then
@@ -49,23 +54,30 @@ git config svn.authorsfile $AUTHORS_FILE
 # Step 3. Import the repo from SVN
 git svn fetch
 
-echo These are imported branches:
-git branch -a
-# Step 4. Conversion of tags
-for t in `git branch -a | grep 'tags/' | sed s_remotes/origin/tags/__` ; do
+# echo These are imported branches:
+# git branch -a
+# [OPTIONAL]: Step 4. Conversion of tags
+for t in 'git branch -a | grep 'tags/' | sed s_remotes/origin/tags/__' ; do
  git tag $t origin/tags/$t
  git branch -d -r origin/tags/$t
 done
 
-git tag -l
+# git tag -l
 
-# Step 5. Converting branches
-for t in `git branch -r | sed s_origin/__` ; do
- git branch $t origin/$t
- git branch -D -r origin/$t
+# [OPTIONAL]: Step 5. Converting branches
+git branch -r | sed 's/origin\///' | while read -r t; do
+  echo "$t"
+  git branch "$t" "origin/$t"
+  git branch -D -r "origin/$t"
 done
 
 # Step 6. Cleaning the SVN stuff
 git config --remove-section svn-remote.svn
 git config --remove-section svn
 rm -fr .git/svn .git/{logs,}/refs/remotes/svn
+
+# for t in 'git branch -r | sed s_origin/__' ; do
+#   echo $t
+#   git branch $t origin/$t
+#   git branch -D -r origin/$t
+# done

@@ -1,7 +1,6 @@
 # config.sh
+PROJECT_NAME='NAME_FOR_PROJECT'
 
-PROJECT_NAME='AbleCommerce8'
-
-SVN_HOST=https://dev.ablecommerce.com:9443/svn/AbleCommerce8
-TARGET_DIR=/home/applivity/ahmedk/ablecommerce/AbleCommerce8
-AUTHORS_FILE=/home/applivity/ahmedk/ablecommerce/$svn-authors.txt
+SVN_HOST=https://svn_host
+TARGET_DIR=/path/to/local/git/dir
+AUTHORS_FILE=/path/to/local/svn-authors.txt
